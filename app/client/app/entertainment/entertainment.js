@@ -50,8 +50,3 @@ var pS = new pageSwitch('pageAll', {
         $("#"+obj).animate({opacity: 0,height: 0+"px",width:0+"px",top:0.5*win_height+"px",left:0.5*win_width+"px" ,fontSize:"3vh"},"fast");
         pS.play();
     }
- 
-
-
-
-

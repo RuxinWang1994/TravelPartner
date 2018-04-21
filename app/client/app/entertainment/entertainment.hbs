@@ -1,4 +1,13 @@
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/entertainment/iconfont.css">
+<link rel="stylesheet" type="text/css" href="/entertainment/pageSwitch.css">
+<link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css">
+
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -27,39 +36,42 @@
 		</div>
 	</nav>
 
-
+<!-- <link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css"> -->
 	<!-- this is the jumbotron in the top -->
-	
+
 	<div class="container" >
 		<!-- <div><p>What's Hot</p></div> -->
 		<br><br>
-   		<h1 style="font-family: Indie Flower; font-size: 50px; padding-bottom: 20px; text-transform: uppercase; color: #2c3e50;"> 
-   				Entertainments @ #####BOSTON#####</h1> 
+   		<h1 style="font-family: Indie Flower; font-size: 50px; padding-bottom: 20px; text-transform: uppercase; color: #2c3e50;">
+   				Entertainments @ #####BOSTON#####</h1>
    		<h3 style="font-family: Indie Flower; color: #2c3e50"><i class="fa fa-camera-retro"></i>
-   				A bunch of entertainment ideas, tips, and recommendations for you for a happier journey!</h3> 
+   				A bunch of entertainment ideas, tips, and recommendations for you for a happier journey!</h3>
   		<br><br>
 
-		
+
 		<div id="container1">
   	  		<div class="sections" id="pageAll">
-  	  			
+
   	  			{{#each top3}}
-       			<div class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')" 
-       				style = "background-image: url({{image}})"><h2>{{title}}</h2></div>
-    			<div id="jumpContent{{@key}}"  style="height: 0%; width: 0%;left:50%;top:50%;position: absolute;border: none;background-color: #efefef;opacity: 0;" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
-   	    	 	
+						<div style="width: 100%; height= 100%">
+							<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')"
+							src = "{{img}}">
+
+    			 		<div id="jumpContent{{@key}}"  style="display:block;  height: 0%; width: 0%; left:50%; top:50%; position: absolute; border: none; background-color: #efefef; opacity: 0.5" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
    	    	 	    <div class='caption' align="center" style="font-size: 20px">
-        			<br><br>
+        				<br><br>
 	          		<p>{{details.descrip}}</p>
 	          		<p><strong>When:</strong>{{details.when}}</p>
 	          		<p><strong>Where:</strong>{{details.where}}</p>
 	          		<p><strong>Ticket Discount Code:</strong>  {{ticketInfo.discount}}</p>
 	          		<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
 	          		</div>
-    			</div>
+    					</div>
+
+						</div>
        			{{/each}}
 
-    		</div>    		
+    		</div>
 		</div>
 		<br><br>
 
@@ -69,11 +81,11 @@
 
 	      <div class="col-lg-4 col-sm-6">
 	        <div class="thumbnail">
-	          
+
 	          <img  src="{{image}}" style="height: 180px; width: 100%;" >
 	          <h3>{{title}}</h3>
     				<div class="caption">
-        			
+
 	          			<p>{{details.descrip}}</p>
 	          			<p><strong>When:</strong>{{details.when}}</p>
 	          			<p><strong>Where:</strong>{{details.where}}</p>
@@ -95,6 +107,6 @@
 
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-<script src="pageSwitch.js"></script>
-<script type="text/javascript" src="entertainment.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/entertainment/pageSwitch.js"></script>
+<script type="text/javascript" src="/entertainment/entertainment.js"></script>

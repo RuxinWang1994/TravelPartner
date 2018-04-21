@@ -17,7 +17,7 @@ router.get('/view/:hotel', function(req, res,next){
      console.log(hotel.desc);
      console.log(hotel.address);
   res.render('accommodation_new/subtest1', { img_source_1: (hotel.img)[1], img_source_2: (hotel.img)[2], img_source_3:(hotel.img)[3],
-                                        name: hotel.name, phone: hotel.phone, price: hotel.price, email: hotel.email,description:hotel.desc,address:hotel.address});
+                                        name: hotel.name, phone: hotel.phone, price: hotel.price, email: hotel.email, address:hotel.address, description:hotel.desc});
      }
 
    })

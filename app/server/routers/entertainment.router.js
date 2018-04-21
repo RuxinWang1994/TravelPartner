@@ -5,21 +5,26 @@ const router = require('express').Router();
 router.get('/:place', (req, res, next)=>{
   let Place = req.app.locals.db.model('Place');
   let Spot = req.app.locals.db.model('Spot');
-  let place = req.params.place.split('-');
 
+  let place = req.params.place.split('-');
   let placeName = place[0];
   let placeId = place[1];
 
   Place.findById(placeId, function(err, place){
-    if (!err){
-      let spots = place.spots;
-      // console.log(spots);
+    if (err) { console.log(err);}
+    else{
 
-      Spot.find({'_id': {$in: spots }}).exec(function(err, result1){
-        // console.log(result1);
+      let spotss = place.spots;
+      console.log(spotss);
+
+      Spot.find({'_id': {$in: spotss }}).exec(function(err, result1){
+        if (err){console.log(err);}
+        else{
+        console.log('===== Here is spot query result =====');
+        console.log(result1);
 
         let top = [];
-        let regular =[];
+        //let regular =[];
         for (let result of result1){
 
           top.push({
@@ -46,15 +51,18 @@ router.get('/:place', (req, res, next)=>{
         //
         // });
         //
-  res.render('entertainment/entertainment', { top3: top});
+        console.log('===== Here is top 1 spot =====');
+        console.log(top[0]);
+        res.render('entertainment/entertainment', { top3 : top});
+}//spot find else end
 
-      });
-//1st
-}else{console.log(err);
-console.log(12312);}
+      }); //spot find end
 
-  });
+} // place block else end
+
+}); // find place block end
 
 
-});
+}); //get block end
+
 module.exports = router;
