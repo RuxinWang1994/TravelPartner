@@ -78,6 +78,7 @@ router.post('/signup', (req, res, next) => {
         pwd: pwd,
         email: email,
         phone: phone,
+        avatar: '',
         tags: tags.split(',').filter((v) => v),
         locations: locations.split(',').filter((v) => v)
     });

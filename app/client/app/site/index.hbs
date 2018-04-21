@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/site/site.css" />
 
 <div id="myCarousel" class="carousel slide" style="height:300px">
 <!-- 轮播（Carousel）指标 -->
@@ -31,53 +32,88 @@
 
 
 <div class="container">
-    <div>mottos about travelling </div>
+    <br><br><h4 style="color: #666699; text-indent:22px;"><em>Travel is a beautiful missing,
+      missing is a beautiful journey. Not to let others be able to temporarily forget me,
+       but in order to let others be able to think of me.</em> </h4><br>
   <p class="paragraph" style="font-size:25px;">{{introduction}}</p>
 
-  <h3><em>Click on the cities in the map below</em></h3><br>
-  <div>开启你的旅行 xxxxx</div>
+  <div style="color:#666699;" >Begin Your Travel!</div>
   <div id="google-map"  style="width:100%;height:500px; ">
   </div>
 <br><br>
 
-<h3 class="paragraph text-info">Most frequently visited Cities</h3>
-<div>
-    {{#each guide}}
-    <div class="row">
-        <div class="col-xs-6 ">
-            <img src="{{image}}" alt="Lights" style="width:80%;">
-                </div>
-        <div class="col-xs-6 ">
-            <br><br><p class="paragraph text-info">{{title}}</p>
-            <div style="float: left;" class="text-info">Feature:</div>
-            {{#each tags}}
-            <div>{{this}}</div>
-            {{/each}}
-            <br>
-            <p><em>{{summary}}<a class="text-info" href={{url}} target="_blank">view more.</em></a></p>
+
+
+<h3 style="color:#666699;">Most frequently visited Cities</h3>
+
+<div class="row" style="background-color:white;">
+
+    <div >
+      <div class="sender">
+        <div>
+            <img src="chatTemplateExample2_files/cat.jpg">
         </div>
-    </div>
-    {{/each}}
-</div>
-
-<div class="well">
-        <div class="row">
-          {{#each TopHotel}}
-            <div class=" col-sm-3  headText">
-                <a href="{{url}}" class="thumbnail">
-                    <!--<img src="https://media-cdn.tripadvisor.com/media/photo-p/0b/c4/3a/75/fairmont-copley-plaza.jpg" style="height: 220px;">-->
-                    <img src="{{image_source}}">
-                    </a>
-                    <!--<h5>Top 1!&nbsp;Fairmont Copley Plaza, Boston</h5>-->
-                    <h5>Top 1!&nbsp;{{name}}</h5>
-
-                    <div class="text-muted">Boston, MA</div>
-                    <div class="text-muted">{{address}}</div>
+        <div>
+          <div class="left_triangle"></div>
+          <span>
+            <div class="container" style="width:500px;">
+              <div class="row">
+                  <div class="col-xs-6 ">
+                      <img src="{{image}}" alt="Lights" style="width:80%;">
+                          </div>
+                  <div class="col-xs-6 ">
+                      <br><br><p class="paragraph text-info"><a href={{url}} target="_blank">{{title}}</a></p>
+                      <div style="float: left;">by</div><div class="user">{{user}} </div>
+                      <p>{{updated_at}}</p>
+                      <div>Votes:{{votes}}</div>
+                      <div style="float: left;" class="text-info">Feature:</div>
+                      {{#each tags}}
+                      <div>{{this}}</div>
+                      {{/each}}
+                      <br>
+                      <p><em>{{summary}}<a class="text-info" href={{url}} target="_blank">view more.</em></a></p>
+                  </div>
               </div>
+            </div>
 
-          {{/each}}
+          </span>
+        </div>
+      </div>
+<!-- Right -->
+<div class="receiver">
+    <div>
+        <img src="chatTemplateExample2_files/cat.jpg">
+    </div>
+ <div>
+      <div class="right_triangle"></div>
+      <span>
+        <div class="container" style="width:500px;">
+          <div class="row">
+              <div class="col-xs-6 ">
+                  <img src="{{image}}" alt="Lights" style="width:80%;">
+                      </div>
+              <div class="col-xs-6 ">
+                  <br><br><p class="paragraph text-info"><a href={{url}} target="_blank">{{title}}</a></p>
+                  <div style="float: left;">by</div><div class="user">{{user}} </div>
+                  <p>{{updated_at}}</p>
+                  <div>Votes:{{votes}}</div>
+                  <div style="float: left;" class="text-info">Feature:</div>
+                  {{#each tags}}
+                  <div>{{this}}</div>
+                  {{/each}}
+                  <br>
+                  <p><em>{{summary}}<a class="text-info" href={{url}} target="_blank">view more.</em></a></p>
+              </div>
           </div>
+        </div>
+      </span>
+ </div>
 </div>
+    </div>
+</div>
+
+
+
 
 </div>
 <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;right: 30px;">Top</button>

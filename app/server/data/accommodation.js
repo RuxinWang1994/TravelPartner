@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let AccommodationSchema = new Schema({
-_id: {
-     type: Schema.Types.ObjectId,
-     default: new mongoose.Types.ObjectId
- },
+//_id: {
+//     type: Schema.Types.ObjectId,
+//     default: new mongoose.Types.ObjectId
+// },
 name: {
      type: String,
     index: true,

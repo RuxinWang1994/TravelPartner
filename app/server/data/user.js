@@ -7,10 +7,10 @@ const Schema = mongoose.Schema;
 const saltRounds = 10;
 
 let UserSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        default: new mongoose.Types.ObjectId
-    },
+//    _id: {
+//        type: Schema.Types.ObjectId,
+//        default: new mongoose.Types.ObjectId
+//    },
     name: {
         type: String,
         index: true,

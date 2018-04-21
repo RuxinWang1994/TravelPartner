@@ -3,7 +3,7 @@
  * @author qiqiboy
  * @github https://github.com/qiqiboy/pageSwitch
  */
-;
+
 (function(ROOT, struct, undefined){
     "use strict";
     

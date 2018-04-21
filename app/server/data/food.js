@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let FoodSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        default: new mongoose.Types.ObjectId
-    },
+//    _id: {
+//        type: Schema.Types.ObjectId,
+//        default: new mongoose.Types.ObjectId
+//    },
     image: {
         type: [String],
         required: true

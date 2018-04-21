@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="/entertainment/iconfont.css">
-<link rel="stylesheet" type="text/css" href="/entertainment/pageSwitch.css">
+
 <link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css">
 
 
@@ -53,22 +53,23 @@
   	  		<div class="sections" id="pageAll">
 
   	  			{{#each top3}}
-						<div style="width: 100%; height= 100%">
-							<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')"
-							src = "{{img}}">
+				<div>
+					<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')" src = "{{img}}" style="width: 100%; height= 100%">
 
-    			 		<div id="jumpContent{{@key}}"  style="display:block;  height: 0%; width: 0%; left:50%; top:50%; position: absolute; border: none; background-color: #efefef; opacity: 0.5" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
-   	    	 	    <div class='caption' align="center" style="font-size: 20px">
-        				<br><br>
-	          		<p>{{details.descrip}}</p>
-	          		<p><strong>When:</strong>{{details.when}}</p>
-	          		<p><strong>Where:</strong>{{details.where}}</p>
-	          		<p><strong>Ticket Discount Code:</strong>  {{ticketInfo.discount}}</p>
-	          		<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
-	          		</div>
-    					</div>
+    			 	<div id="jumpContent{{@key}}"style="height: 0%; width: 0%; left:50%; top:50%; position: absolute; border: none; background-color: #efefef; opacity: 0； font-size: 20px; display: none" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
 
-						</div>
+   	    	 	    	<div id="show{{@key}}"  class='caption' align="center">
+        					
+	          				<p>{{details.descrip}}</p>
+	          				<p><strong>When:</strong>{{details.when}}</p>
+	          				<p><strong>Where:</strong>{{details.where}}</p>
+	          				<p><strong>Ticket Discount Code:</strong>{{ticketInfo.discount}}</p>
+	          				<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
+	          			</div>
+	          			
+    				</div>
+
+				</div>
        			{{/each}}
 
     		</div>

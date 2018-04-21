@@ -7,11 +7,12 @@ router.get("/:city", function(req, res, next){
 	let Place = req.app.locals.db.model('Place');
 	let cityId = (req.params.city.split("-"))[1];
 
-	Place.findById(cityId, function(err, foodIds){
+	Place.findById(cityId, function(err, city){
 		if(err){
 			console.log(err);
 		}else{
-
+			let foodIds = city.foods;
+			console.log(foodIds);
 		Food.find({_id: {$in: foodIds}}, function(err, allResults){
 		if(err){
 			console.log(err);

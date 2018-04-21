@@ -1,31 +1,5 @@
 <link rel="stylesheet" href="/Comment/css/formstyle.css" />
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- The hamburger on the right -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#############" class="navbar-brand">TravelPartner</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-nav-demo">
-            <ul class="nav navbar-nav">
-                <li><a href="############">Guide</a></li>
-                <li><a href="############">Food</a></li>
-                <li><a href="############">Accomodation</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="############">Sign Up</a></li>
-                <li><a href="############">Login</a></li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
 <div id ="TG">
 </div>
 <div class="container">
@@ -71,12 +45,26 @@
     </tbody>
 </table>
 
-<p><a class="text-info" href={{create}} target="_blank">view more.</a></p>
+<button id="write" onClick="location.href='{{create}}'"  class="btn btn-primary" >Write a comment!</button>
+
 <!--<button onclick="window.location='file:///Users/xiaohanzhang/Desktop/syr2018spring/686/TP/TravelPartner/app/client/app/TG/Write.html '"  class="btn btn-success" >Write a Guide!</button>-->
 <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;right: 30px;">Top</button>
  </div>
 <script>
     window.onscroll = function() {scrollFunction()};
+
+    $(document).ready(function() {
+      $('#write')
+        .click(function(){
+          if (localStorage.getItem('token')==null) {
+        $('#sign-in-modal').modal('show');
+            return false;
+          }
+          var url = $('#canwrite').val();
+          location.href(url);
+          return true;
+      });
+    });
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {

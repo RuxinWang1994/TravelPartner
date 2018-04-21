@@ -57,7 +57,7 @@ const dbConnection = ((db) => {
     let userString = '';
     if (db.user != '' && db.pwd != '')
         userString = `${db.user}:${db.pwd}@`;
-    
+
     let connection = `mongodb://${userString}${db.host}:${db.port}/${db.db}`;
     if (db.extra != '')
         connection += `?${db.extra}`;
@@ -109,7 +109,7 @@ app.use((req, res, next) => {
 
             return token.get(decoded.u).then((t) => {
                 res.set('Authorization', 'Bearer ' + t);
-                next();
+                return next();
             }, next);
         }, (err) => { next(); });
     } else {
@@ -142,4 +142,3 @@ dbConnection.then((res) => {
 }, (err) => {
     console.log('Cannot connect to the database.');
 });
-

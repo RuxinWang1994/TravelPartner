@@ -1,8 +1,8 @@
-document.write("<link rel='stylesheet' href='css/formstyle.css'/>");
+//document.write("<link rel='stylesheet' href='css/formstyle.css'/>");
 
 
 function validateForm(){
-    
+
     var flag=true;
     var text=document.getElementsByClassName("required");
     for(var i=0;i<text.length;i++)
@@ -30,8 +30,18 @@ window.onload = function() {
                                   }
                                   }
                                   }, true);}
-
-    var userEle = document.getElementById("user");
+    var imgEle = document.getElementById("banner");
+    if(imgEle){
+        imgEle.addEventListener("input",function() {
+                                  if (imgEle.value!="")
+                                  {
+                                  if(imgEle.classList.contains('error'))
+                                  {
+                                  imgEle.classList.remove('error');
+                                  }
+                                  }
+                                  }, true);}
+    var userEle = document.getElementById("keyword");
     if(userEle){
         userEle.addEventListener("input",function() {
                                   if (userEle.value!="")
@@ -42,17 +52,9 @@ window.onload = function() {
                                   }
                                   }
                                   }, true);}
-    var dateElem = document.getElementById("date");
-    if(dateElem){
-        dateElem.addEventListener("input",function() {
-                                if (dateElem.value!="")
-                                {
-                                if(dateElem.classList.contains('error'))
-                                {
-                                dateElem.classList.remove('error');
-                                }
-                                }
-                                }, true);}
+
+
+
     var contentElem = document.getElementById("content");
     if(contentElem){
         contentElem.addEventListener("input",function() {
@@ -65,5 +67,3 @@ window.onload = function() {
                                   }
                                   }, true);}
 }
-
-

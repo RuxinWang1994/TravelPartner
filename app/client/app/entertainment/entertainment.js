@@ -41,7 +41,8 @@ var pS = new pageSwitch('pageAll', {
         var win_height = $("#"+img).height();
         var win_width = $("#"+img).width();
         $("#"+obj).animate({opacity: 0.9,height: win_height+"px",width:win_width+"px",top:0 +"px",left:0 +"px",fontSize:"3vh"},"fast");
-       pS.pause();
+        $("#"+obj).fadeIn(100);
+        pS.pause();
 	}
 
     function jumpBack(obj,img){

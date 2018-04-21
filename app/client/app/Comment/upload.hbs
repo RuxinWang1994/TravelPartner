@@ -1,38 +1,11 @@
+<link rel="stylesheet" href="/TG/css/formstyle.css" />
 
-<link rel="stylesheet" href="/Comment/css/formstyle.css" />
-<nav class="navbar navbar-inverse navbar-fixed-top">
-<div class="container">
-<div class="navbar-header">
-<!-- The hamburger on the right -->
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a href="#############" class="navbar-brand">TravelPartner</a>
-</div>
-
-<div class="collapse navbar-collapse" id="bs-nav-demo">
-<ul class="nav navbar-nav">
-<li><a href="############">Guide</a></li>
-<li><a href="############">Food</a></li>
-<li><a href="############">Accomodation</a></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<li><a href="############">Sign Up</a></li>
-<li><a href="############">Login</a></li>
-</ul>
-</div>
-
-</div>
-</nav>
 <div id ="TG">
 </div>
 
 </div>
 <div class="container">
-<div style="background-image: url(Gasson.jpg)"， class="jumbotron" >
+<div class="jumbotron" >
 <h2 class="headCenterText"> Write your own guides! </h2>
 <h3 class="headCenterText"> Express your ideas and impacts</h3>
 </div>
@@ -40,8 +13,12 @@
 <h2 class="headText">Write a travel guide</h2><br><br>
 
 <!--<form method="get" action="" onsubmit="return validateForm()",action 是submit之后跳转的页面的URL>-->
-<form method="post" action="" id="guideForm">
-<input id="title" type="text" class="form-control required" placeholder="Please Input Travel Guide Title"><br>
+<form method="post" action="" onsubmit="return validateForm()" id="guideForm">
+<input id="title" type="text" class="form-control required" placeholder="Please Input Travel Guide Title">
+<br>
+<input id="keyword" type="text" class="form-control required" placeholder="Please Input keywords">
+<br>
+
 <textarea id="content" class="form-control required" rows="20" placeholder="Please Input Your Travel Guide!"></textarea><br>
 
 <button id="TrySubmit" type="submit" class="btn btn-primary">Submit</button><br><br>
@@ -49,9 +26,26 @@
 <div style="height:100px"></div>
 </form>
 
-<div id="myAlert" class="alert alert-warning">
-	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	<strong>警告！</strong>您的网络连接有问题。
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					Warning
+				</h4>
+			</div>
+			<div class="modal-body">
+				Inout should not be empty!
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 </div>
 
 </div>
@@ -59,54 +53,48 @@
 
 <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;right: 30px;">Top</button>
 <script>
-
-$(function(){
-	$(".close").click(function(){
-		$("#myAlert").alert();
-	});
-});
-
-
-
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-document.getElementById("myBtn").style.display = "block";
-} else {
-document.getElementById("myBtn").style.display = "none";
-}
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
 }
 
 function topFunction() {
-document.body.scrollTop = 0;
-document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 $('#TrySubmit')
-.click(function(){
-if (!validateForm()) {
-return false;
+  .click(function(){
+    if (!validateForm()) {
+      return false;
 }
 
 var title = $('#guideForm #title').val();
+var keyword=$('#guideForm #keyword').val();
 var content = $('#guideForm #content').val();
 axios.post('/g/new', {
-title: title,
-content: content
-}).then(function (response) {
-console.log(response);
-if (response.status == 'fail') {
+  title: title,
+  keyword: keyword,
+  content: content
+  }).then(function (response) {
+    console.log(response);
+    if (response.status == 'fail') {
+			$('#myModal').modal('show');
 
-} else {
-location.href(response.xxxx);
-}
-})
-.catch(function (error) {
-console.log(error);
-});
-console.log(title);
-return false;
+    } else {
+    //  location.href(response.xxxx);
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  console.log(title);
+  return false;
 });
 
 

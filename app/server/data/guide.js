@@ -1,13 +1,13 @@
-'use strict'
+'use strict';
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let GuideSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        default: new mongoose.Types.ObjectId
-    },
+//    _id: {
+//      type: Schema.Types.ObjectId,
+//    default: new mongoose.Types.ObjectId
+//    },
     title: {
         type:String,
         index: true,
@@ -34,18 +34,15 @@ let GuideSchema = new Schema({
         default: Date.now
     },
     votes: {
-        type: [String],
-        required: true, 
-        default: []
+        type: [String], 
+        default: [] 
     },
     image: {
-    type: [String],
-    required: true
+    type: [String]
     },
     banner: {
-        type: String,
+        type: String
     }
-    
 });
 
 module.exports = mongoose.model('Guide', GuideSchema);

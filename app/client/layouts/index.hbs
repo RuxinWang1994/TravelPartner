@@ -81,8 +81,6 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-
-
                         </div>
                     </div>
                 </div>
@@ -97,16 +95,16 @@
     <script>
      $(document).ready(function() {
          // TODO: Change it. Check status each time listener is triggered.
-         var lastScroll = 0;
-         $(window).scroll(function() {
-             var thisScroll = $(this).scrollTop();
-             if (thisScroll > lastScroll) {
-                 $('#nav-container').hide(200);
-             } else {
-                 $('#nav-container').show(200);
-             }
-             lastScroll = thisScroll;
-         });
+         // var lastScroll = 0;
+         // $(window).scroll(function() {
+         //    var thisScroll = $(this).scrollTop();
+         //    if (thisScroll > lastScroll) {
+         //        $('#nav-container').hide(200);
+         //    } else {
+         //        $('#nav-container').show(200);
+         //    }
+         //    lastScroll = thisScroll;
+         // });
 
          $('#btn-signin').click(function(event){
              event.preventDefault();
