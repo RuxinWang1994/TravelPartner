@@ -5,12 +5,18 @@ const router = require('express').Router();
 router.get("/:city", function(req, res, next){
 	let Food = req.app.locals.db.model('Food');
 	let Place = req.app.locals.db.model('Place');
-	let cityId = (req.params.city.split("-"))[1];
+	let cityParam = req.params.city;
+    let cityId = (req.params.city.split("-"))[1];
+    let cityName = (req.params.city.split("-"))[0];
 
 	Place.findById(cityId, function(err, city){
 		if(err){
 			console.log(err);
 		}else{
+			console.log(city);
+    		if (city == undefined || city == null) {
+    			return next(new Error('Empty record'));
+    		}
 			let foodIds = city.foods;
 			console.log(foodIds);
 		Food.find({_id: {$in: foodIds}}, function(err, allResults){
@@ -28,23 +34,24 @@ router.get("/:city", function(req, res, next){
 			for (let result of allResults){
                  if(result.restaurant.isRes == true){
                  	 let isDinner = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == dinner)
+                 	 	      return (value == "dinner")
                  	 })
                  	 let isLunch = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == lunch)
+                 	 	      return (value == "lunch")
                  	 })
                  	 let isBreak = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == breakfast)
+                 	 	      return (value == "breakfast")
                  	 })
                  	 let isCheap = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == cheapEat)
+                 	 	      return (value == "cheapEat")
                  	 })
                  	 let isMid = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == midRange)
+                 	 	      return (value == "midRange")
                  	 })
                  	 let isLuxury = result.tags.findIndex((value, index, arr) => {
-                 	 	      return (value == luxury)
+                 	 	      return (value == "luxury")
                  	 })
+                 	 console.log(isLunch);
 
                      if(isDinner >= 0){
                      	dinner.push({
@@ -54,7 +61,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
                      if(isLunch >= 0){
@@ -65,7 +72,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
                      if(isBreak >= 0){
@@ -76,7 +83,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
                      if(isCheap >= 0){
@@ -87,7 +94,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
                      if(isMid >= 0){
@@ -98,7 +105,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
                      if(isLuxury >= 0){
@@ -109,7 +116,7 @@ router.get("/:city", function(req, res, next){
                      		image: result.image,
                      		name: result.name,
                      		descript: result.descript,
-                     		url: "/f/" + result.name.split(" ").join("-")
+                     		url: "/f/view/" + result.name.split(" ").join("-")
                      	})
                      }
 
@@ -129,8 +136,11 @@ router.get("/:city", function(req, res, next){
 				// 	descript: result.descript
 				// })
 			}
-			res.render("food/food", {dinner: dinner, 
-				                     lunch: lunch, 
+			console.log("test");
+			console.log(localFood);
+			console.log(lunch);
+			res.render("food/food", {dinner: dinner,
+				                     lunch: lunch,
 				                     breakfast: breakfast,
 				                     cheapEat: cheapEat,
 				                     midRange: midRange,
@@ -149,7 +159,7 @@ router.get("/:city", function(req, res, next){
 module.exports = router;
 
 
-router.get("/f/:name", function(req, res, next){
+router.get("/view/:name", function(req, res, next){
 	let Food = req.app.locals.db.model('Food');
 	let name = req.params.name.split("-").join(" ");
 	Food.find({"name": name}, function(err, results){
@@ -157,6 +167,9 @@ router.get("/f/:name", function(req, res, next){
 			console.log(err);
 		}else{
 			let result = results[0];
+			if (result == undefined || result == null) {
+				return next(new Error('Empty record'));
+			}
 			let ret = {
 				name : result.name,
 				descript : result.descript,
@@ -165,7 +178,7 @@ router.get("/f/:name", function(req, res, next){
 				email : result.restaurant.email,
 				phone : result.restaurant.phone
 			}
-			res.render("food/??", {restaurant: ret})
+			res.render("food/The Breakfast Club", {restaurant: ret})
 
 		}
 	})

@@ -31,7 +31,7 @@
 </div>
 <br/>
 <br/>
-{{restaurant}}
+{{#with restaurant}}
 <h2> &nbsp;&nbsp;&nbsp;{{name}}</h2>
 <div class="text-muted ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addr:{{location}}&nbsp;&nbsp;Tel:{{phone}}
 	&nbsp;&nbsp;E-mail:{{email}}
@@ -68,20 +68,19 @@
 <center>
 		 <div style="text-align: center">
 		 <section class="flex-container headText">
+			 {{#each image}}
+			 <img src="{{this}}">
 
-			 <img src="{{image[0]}}">
 
-			 <img src="{{image[1]}}">
-
-			 <img src="{{image[2]}}" >
+			 {{/each}}
 
 		 </section>
 	 </div>
 </center>
 </div>
 <h2>Description</h2>
-<p>{{descrip}}</p>
-{{/restaurant}}
+<p>{{descript}}</p>
+{{/with}}
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
