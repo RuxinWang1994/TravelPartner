@@ -58,7 +58,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -69,7 +69,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -80,7 +80,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -91,7 +91,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -102,7 +102,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -113,7 +113,7 @@ router.get("/:city", function(req, res, next){
                      		location: result.restaurant.location,
                      		email: result.restaurant.email,
                      		phone: result.restaurant.phone,
-                     		image: result.image,
+                     		image: result.image[0],
                      		name: result.name,
                      		descript: result.descript,
                      		url: "/f/view/" + result.name.split(" ").join("-")
@@ -168,8 +168,8 @@ router.get("/view/:name", function(req, res, next){
 		}else{
 			let result = results[0];
 			if (result == undefined || result == null) {
-				return next(new Error('Empty record'));
-			}
+    			return next(new Error('Empty record'));
+    		}
 			let ret = {
 				name : result.name,
 				descript : result.descript,
