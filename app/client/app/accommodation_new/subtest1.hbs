@@ -7,6 +7,8 @@
   	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/	font-awesome.min.css">
 -->
 <link rel="stylesheet" href="accommodation_new/accommodation1.css">
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
   	<style type="text/css">
     body { padding-top: 70px; }
     .jumbotron {
@@ -63,22 +65,20 @@
 </head>
 <body>
 	<div style="text-align:center" class="container">
-		 <div style="background-image: url(images/hotelbackground2.jpg)"， class="jumbotron" >
-   			<h2>   Finding your perfect hotel to live! </h2> <!-- <i class="fa fa-camera-retro"></i> -->
-   			<p> Recommendation of the local hotel for you for a happier journey!</p>
+		 <div style="background-image: url(https://images.unsplash.com/photo-1504964030113-79ab61954f0e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=77728173ec3c2c7ed05cf2f68bad0da5&auto=format&fit=crop&w=1650&q=80)"， class="jumbotron" >
+   			<h2 style="font-family:Gamja Flower">   Finding your perfect hotel to live! </h2> <!-- <i class="fa fa-camera-retro"></i> -->
+   			<p style="font-family:Gamja Flower"> Recommendation of the local hotel for you for a happier journey!</p>
 			</div>
 
 
 			<br/>
 			<br/>
 
-			<h2> &nbsp;&nbsp;&nbsp;{{name}}</h2>
-			<div class="text-muted ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:{{email}}&nbsp;&nbsp;Tel:{{phone}}
-<<<<<<< HEAD
-				&nbsp;&nbsp;Price:{{price}}&nbsp;&nbsp;Address:{{address}}
-=======
+
+			<h2 style="font-family:Jua"> &nbsp;&nbsp;&nbsp;{{name}}</h2>
+			<div style="font-family:Jua"class="text-muted ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:{{email}}&nbsp;&nbsp;Tel:{{phone}}
 				&nbsp;&nbsp;Price:{{price}}&nbsp;&nbsp;Addr:{{address}}
->>>>>>> upstream/master
+
 				</div>
 			<br/>
 			<br/>
@@ -97,7 +97,7 @@
 				           box-sizing: border-box;
 				           padding: 1px;
 				           margin: 1px;
-				           width: 400px;
+				           width: 345px;
 				           height: 218px;
 				         }
 				           .flex-container img:first-child
@@ -121,10 +121,10 @@
 				   </section>
 				 </div>
  </center>
- <h2>Description</h2>
-  <p>{{description}}</p>
-
-
+ </br>
+ </br>
+ <h2 style="font-family:Jua">Description</h2>
+  <p style="font-family:Jua" class="text-muted">{{description}}</p>
 </div>
 <!-- Top function-->
 <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;
@@ -154,7 +154,7 @@ function topFunction() {
 
 
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="display:none">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- The hamburger on the right -->
@@ -171,7 +171,7 @@ function topFunction() {
 				<ul class="nav navbar-nav">
 					<li><a href="############">Guide</a></li>
 					<li><a href="############">Food</a></li>
-					<li><a href="############">Accomodation</a></li>
+					<li><a href="############">Transpotration</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="############">Sign Up</a></li>

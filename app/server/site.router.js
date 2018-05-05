@@ -55,7 +55,7 @@ router.post('/signin', (req, res, next) => {
 });
 
 router.post('/logout', (req, res, next) => {
-    
+
 });
 
 module.exports = router;

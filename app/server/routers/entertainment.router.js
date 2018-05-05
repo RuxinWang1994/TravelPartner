@@ -9,7 +9,7 @@ router.get('/:place', (req, res, next)=>{
   let place = req.params.place.split('-');
   let placeName = place[0];
   let placeId = place[1];
-
+  console.log(placeName);
   Place.findById(placeId, function(err, place){
     if (err) { console.log(err);}
     else{
@@ -17,48 +17,52 @@ router.get('/:place', (req, res, next)=>{
       let spotss = place.spots;
       console.log(spotss);
 
-      Spot.find({'_id': {$in: spotss }}).exec(function(err, result1){
+      Spot.find({'_id': {$in : spotss }}).limit(3).exec(function(err, result1){
         if (err){console.log(err);}
         else{
         console.log('===== Here is spot query result =====');
         console.log(result1);
 
         let top = [];
-        //let regular =[];
+        let regular3 =[];
         for (let result of result1){
 
           top.push({
             img : result.img,
-            url : '/e/' + result.name + '-' + result._id,
+            //url : '/e/' + result.name + '-' + result._id,
             title: result.title,
             details: result.details,
             ticketInfo: result.ticketInfo,
 
           })
         };
-        // Spot.find({'_id':{$in: spots}}).exec(function(err,result2){
-        //   for (let result of result2){
-        //     regular.push({
-        //       img : result.img,
-        //       //url : '/e/' + result.name + '-' + result._id,
-        //       title: result.title,
-        //       details: result.details,
-        //       ticketInfo: result.ticketInfo,
-        //
-        //     })
-        //   };
-        //     res.render('entertainment/entertainment', { top3: top});
-        //
-        // });
-        //
-        console.log('===== Here is top 1 spot =====');
-        console.log(top[0]);
-        res.render('entertainment/entertainment', { top3 : top});
-}//spot find else end
+        Spot.find({'_id':{$in: spotss}}).skip(3).exec(function(err,result2){
+          for (let result of result2){
 
-      }); //spot find end
+            regular3.push({
+              img : result.img,
+              //url : '/e/' + result.name + '-' + result._id,
+              title: result.title,
+              details: result.details,
+              ticketInfo: result.ticketInfo,
 
-} // place block else end
+            })
+          };
+            res.render('entertainment/entertainment',
+             {
+               city: placeName,
+               top3: top,
+               regular: regular3,
+             });
+
+        }); //2st find spot end
+
+
+}//1st spot find else end
+
+}); //1st find spot end
+
+} // find place else end
 
 }); // find place block end
 

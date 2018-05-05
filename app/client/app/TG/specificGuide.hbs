@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/TG/css/formstyle.css" />
+<link href="https://fonts.googleapis.com/css?family=Cabin|Cute+Font|Dancing+Script|Dosis|Gaegu|Gamja+Flower|Great+Vibes|IBM+Plex+Mono|Quicksand|Satisfy|Titillium+Web" rel="stylesheet">
 
 <div id ="TG">
 </div>
@@ -8,19 +9,18 @@
 
 
 {{#with guide}}
-<div class="jumbotron" >
- <h2 class="headCenterText"> {{title}} </h2>
-  <h4 class="headCenterText"> by {{user}}</h4>
+<div style="background-image: url({{banner}})"， class="jumbotron",style="height:200%;" >
+   <h2 style="text-align: center;font-family: 'Gaegu', cursive;" > {{title}} </h2>
+  <h2 style="text-align: center;font-family: 'Gaegu', cursive;"> by {{user}}</h2>
 </div>
 
-<div style="float: left;"> Feature</div>
+<div style="float: left;color:#5c8cd5"> Feature</div>
 <div class="user">
-  {{#each tags}}
-  <code style="color:#5c8cd5">{{this}}</code>
-  {{/each}}
+
+  <code style="color:#5c8cd5">{{tag}}</code>
 </div>
 <p>{{updated_at}}</p>
-<p style="font-size:19px">{{content}}</p>
+<p style="font-size:18px;font-family:Arial;text-indent:20px;">{{content}}</p>
 {{/with}}
 
 </div>
@@ -43,9 +43,7 @@ document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
 }
 
-
 </script>
-
 
 
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>

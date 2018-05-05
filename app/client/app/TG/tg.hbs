@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="/TG/css/formstyle.css" />
-
+<link href="https://fonts.googleapis.com/css?family=Cabin|Cute+Font|Dancing+Script|Dosis|Gaegu|Gamja+Flower|Great+Vibes|IBM+Plex+Mono|Quicksand|Satisfy|Titillium+Web" rel="stylesheet">
 <div id ="TG">
 </div>
 
 
-<div style="background-image: url({{banner}})"， class="jumbotron",style="height:200%;" >
-    <h2 class="headCenterText"> {{place}} </h2>
-    <h4 class="headCenterText"> A bunch of travel guides give useful recommendations for you!</h4>
-</div>
+
 
 <div class="container">
-
+  <div style="background: #c2c2d6;height:200%; font-family: 'Gaegu', cursive; background-image: url('https://images.unsplash.com/photo-1505485493171-fde25bd8313f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1dc63e2028486fd5ca6648ab0a239ce1&auto=format&fit=crop&w=2100&q=80')"， class="jumbotron" >
+      <h1  style="text-align: center;font-family: 'Gaegu', cursive;color:white"> {{place}} </h1>
+      <h2 style="text-align: center;font-family: 'Gaegu', cursive;color:white"> A bunch of travel guides give useful recommendations for you!</h2>
+  </div>
     <div>
         {{#each guide}}
         <div class="row">
@@ -27,7 +27,7 @@
                 <div>{{this}}</div>
                 {{/each}}
                 <br>
-                <p><em>{{summary}}<a class="text-info" href={{url}} target="_blank">view more.</em></a></p>
+                <p><em>{{summary}}<a class="text-info" href={{url}} target="_blank">...view more.</em></a></p>
             </div>
         </div>
         {{/each}}
@@ -36,13 +36,14 @@
 
   <!--  <div id="canWrite">{{create}}</div>-->
 
-    <button id="write" onClick="location.href='{{create}}'"  class="btn btn-success" >Write a Guide!</button>
+    <button id="write" onClick="location.href='{{create}}'"  class="btn btn-primary" >Write a Guide!</button>
     <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;right: 30px;">Top</button>
   <!--  <buttom id="write" class="btn btn-primary" >Write a Guide!</button>-->
 
 
 </div>
 <script>
+
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
@@ -57,7 +58,7 @@
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
-    
+
 
 /*    $(document).ready(function() {
       $('#write')

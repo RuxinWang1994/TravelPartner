@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Entertainment Main Page</title>
+
+	<title>Hotel Main Page</title>
 
 
 <link rel="stylesheet" href="accommodation_new/accommodation1.css">
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+
   	<style type="text/css">
     body { padding-top: 70px; }
     .jumbotron {
@@ -25,9 +27,8 @@
     	border: none;
     }
   </style>
-</head>
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="display:none">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- The hamburger on the right -->
@@ -56,16 +57,18 @@
 		</div>
 	</nav>
 	<div style="text-align:center" class="container">
-		 <div style="background-image: url(images/hotelbackground2.jpg)"， class="jumbotron" >
-   			<h2>   Finding your perfect hotel to live! </h2> <!-- <i class="fa fa-camera-retro"></i> -->
-   			<p> Recommendation of the local hotel for you for a happier journey!</p>
+		 <div style="background-image: url(https://images.unsplash.com/photo-1504964030113-79ab61954f0e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=77728173ec3c2c7ed05cf2f68bad0da5&auto=format&fit=crop&w=1650&q=80)"， class="jumbotron" >
+   			<h2 style="font-family:Gamja Flower">   Finding your perfect hotel to live! </h2> <!-- <i class="fa fa-camera-retro"></i> -->
+   			<p style="font-family:Gamja Flower"> Recommendation of the local hotel for you for a happier journey!</p>
   		 </div>
 	<!--</div>-->
 
 
 	<!--top 4 hotel-->
+</br>
+</br>
 	<div>
-		<h2>&nbsp;&nbsp;&nbsp;Top Hotel</h2>
+		<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Top Hotel</h1>
 	</div>
 </br>
 	<div class="container">
@@ -76,8 +79,8 @@
 				<img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 			</a>
 	<div class="caption">
-					<h5>{{name}}</h5>
-					<div class="text-muted">{{address}}</div>
+					<h5 style="font-family:Jua">{{name}}</h5>
+					<div style="font-family:Jua"class="text-muted">{{address}}</div>
 					<br>
 				</div>
 		</div>
@@ -88,7 +91,7 @@
 
 	<!-- Cheap hotel-->
 	<div>
-		<h2>&nbsp;&nbsp;&nbsp;Cheap Hotel</h2>
+		<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Cheap Hotel</h1>
 	</div>
 </br>
 	<div class="container">
@@ -99,8 +102,8 @@
 	      <img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 	    </a>
 	<div class="caption">
-          <h5>{{name}}</h5>
-          <div class="text-muted">{{address}}</div>
+          <h5 style="font-family:Jua">{{name}}</h5>
+          <div style="font-family:Jua"class="text-muted">{{address}}</div>
 	        <br>
 	      </div>
 	  </div>
@@ -111,7 +114,7 @@
 
 
 <!-- Family-friendly hotels -->
-	<h2>&nbsp;&nbsp;&nbsp;Family-friendly Hotel</h2>
+	<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Family-friendly Hotel</h1>
 </br>
 	<div class="container">
 	<div class="row">
@@ -121,8 +124,8 @@
 				<img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 			</a>
 	<div class="caption">
-					<h5>{{name}}</h5>
-					<div class="text-muted">{{address}}</div>
+					<h5 style="font-family:Jua">{{name}}</h5>
+					<div style="font-family:Jua" class="text-muted">{{address}}</div>
 					<br>
 				</div>
 		</div>
@@ -133,7 +136,7 @@
 </br>
 </br>
 	<!-- Luxury hotels-->
-	<h2>&nbsp;&nbsp;&nbsp;Luxury Hotel</h2>
+	<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Luxury Hotel</h1>
 </br>
 	<div class="container">
 	<div class="row">
@@ -143,8 +146,8 @@
 				<img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 			</a>
 	<div class="caption">
-					<h5>{{name}}</h5>
-					<div class="text-muted">{{address}}</div>
+					<h5 style="font-family:Jua">{{name}}</h5>
+					<div style="font-family:Jua" class="text-muted">{{address}}</div>
 					<br>
 				</div>
 		</div>
@@ -152,12 +155,11 @@
 		{{/each}}
 	</div>
 	</div>
-</br>
-</br>
+
 
 
 <!-- Romantic hotels-->
-<h2>&nbsp;&nbsp;&nbsp;Romantic Hotel</h2>
+<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Romantic Hotel</h1>
 </br>
 <div class="container">
 <div class="row">
@@ -167,8 +169,8 @@
 			<img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 		</a>
 	<div class="caption">
-				<h5>{{name}}</h5>
-				<div class="text-muted">{{address}}</div>
+				<h5 style="font-family:Jua">{{name}}</h5>
+				<div style="font-family:Jua" class="text-muted">{{address}}</div>
 				<br>
 			</div>
 	</div>
@@ -176,11 +178,10 @@
 	{{/each}}
 </div>
 </div>
-</br>
-</br>
+
 
 <!--business hotel-->
-<h2>&nbsp;&nbsp;&nbsp;Business Hotel</h2>
+<h1 style="font-family:Gamja Flower">&nbsp;&nbsp;&nbsp;Business Hotel</h1>
 </br>
 <div class="container">
 <div class="row">
@@ -190,8 +191,8 @@
 			<img src="{{image_source}}" style="height: 180px" alt="Charles River Inn">
 		</a>
 	<div class="caption">
-				<h5>{{name}}</h5>
-				<div class="text-muted">{{address}}</div>
+				<h5 style="font-family:Jua">{{name}}</h5>
+				<div style="font-family:Jua" class="text-muted">{{address}}</div>
 				<br>
 			</div>
 	</div>
@@ -199,7 +200,7 @@
 	{{/each}}
 </div>
 </div>
-
+</div>
 
 
 
@@ -235,5 +236,3 @@ function topFunction() {
 
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>

@@ -1,5 +1,7 @@
 
 	<link rel="stylesheet" href=food.css>
+	<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 	  	<style type="text/css">
 	    body { padding-top: 70px; }
 	    .jumbotron {
@@ -24,16 +26,16 @@
 
 	  </style>
 	<div style="text-align:center" class="container">
-		 <div style="background-image: url(images/foodbackground.jpg)"， class="jumbotron" >
-			 <h2>   Finding your perfect restaurant and popular foods </h2> <!-- <i class="fa fa-camera-retro"></i> -->
-			 <p> Recommendation of the local restaurants and foods for you for a happier journey!</p>
+		 <div style="background-image: url(http://img.taopic.com/uploads/allimg/140826/240375-140R60JP775.jpg)"， class="jumbotron" >
+			 <h2 style="font-family:Gamja Flower">   Finding your perfect restaurant and popular foods </h2> <!-- <i class="fa fa-camera-retro"></i> -->
+			 <p style="font-family:Gamja Flower"> Recommendation of the local restaurants and foods for you for a happier journey!</p>
 		 </div>
-</div>
+
 <br/>
 <br/>
 {{#with restaurant}}
-<h2> &nbsp;&nbsp;&nbsp;{{name}}</h2>
-<div class="text-muted ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addr:{{location}}&nbsp;&nbsp;Tel:{{phone}}
+<h2 style="font-family:Jua"> &nbsp;&nbsp;&nbsp;{{name}}</h2>
+<div style="font-family:Jua" class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addr:{{location}}&nbsp;&nbsp;Tel:{{phone}}
 	&nbsp;&nbsp;E-mail:{{email}}
 	</div>
 <br/>
@@ -54,7 +56,7 @@
 						 box-sizing: border-box;
 						 padding: 1px;
 						 margin: 1px;
-						 width: 400px;
+						 width: 340px;
 						 height: 218px;
 					 }
 
@@ -77,10 +79,12 @@
 		 </section>
 	 </div>
 </center>
-</div>
-<h2>Description</h2>
-<p>{{descript}}</p>
+</br>
+</br>
+<h2 style="font-family:Jua">Description</h2>
+<p style="font-family:Jua"class="text-muted">{{descript}}</p>
 {{/with}}
+</div>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">

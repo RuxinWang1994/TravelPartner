@@ -1,14 +1,14 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower|Gamja+Flower" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="/entertainment/iconfont.css">
-
+<!-- <link rel="stylesheet" type="text/css" href="/entertainment/pageSwitch.css"> -->
 <link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css">
 
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="display: none">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- The hamburger on the right -->
@@ -41,10 +41,10 @@
 
 	<div class="container" >
 		<!-- <div><p>What's Hot</p></div> -->
-		<br><br>
-   		<h1 style="font-family: Indie Flower; font-size: 50px; padding-bottom: 20px; text-transform: uppercase; color: #2c3e50;">
-   				Entertainments @ #####BOSTON#####</h1>
-   		<h3 style="font-family: Indie Flower; color: #2c3e50"><i class="fa fa-camera-retro"></i>
+
+   		<h1 style="font-family: Gamja Flower; font-size: 50px; padding-bottom: 20px; text-transform: uppercase; color: #2c3e50;">
+   				Entertainments @ {{city}}</h1>
+   		<h3 style="font-family: Gamja Flower; color: #2c3e50 font-size: 50px"><i class="fa fa-camera-retro"></i>
    				A bunch of entertainment ideas, tips, and recommendations for you for a happier journey!</h3>
   		<br><br>
 
@@ -53,20 +53,20 @@
   	  		<div class="sections" id="pageAll">
 
   	  			{{#each top3}}
-				<div>
-					<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')" src = "{{img}}" style="width: 100%; height= 100%">
+				<div style="width: 100%; height= 30%">
+					<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')" src = "{{img}}" style="width: 100%; height= 150%">
 
     			 	<div id="jumpContent{{@key}}"style="height: 0%; width: 0%; left:50%; top:50%; position: absolute; border: none; background-color: #efefef; opacity: 0； font-size: 20px; display: none" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
 
-   	    	 	    	<div id="show{{@key}}"  class='caption' align="center">
-        					
+   	    	 	    	<div id="show{{@key}}"  class='caption' align="center" style="font-family: Gamja Flower;">
+        					<h3>{{title}}</h3>
 	          				<p>{{details.descrip}}</p>
-	          				<p><strong>When:</strong>{{details.when}}</p>
-	          				<p><strong>Where:</strong>{{details.where}}</p>
-	          				<p><strong>Ticket Discount Code:</strong>{{ticketInfo.discount}}</p>
+	          				<p><strong>When:</strong> {{details.when}}</p>
+	          				<p><strong>Where:</strong> {{details.where}}</p>
+	          				<p><strong>Ticket Info:</strong> {{ticketInfo.discount}}</p>
 	          				<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
 	          			</div>
-	          			
+
     				</div>
 
 				</div>
@@ -83,14 +83,14 @@
 	      <div class="col-lg-4 col-sm-6">
 	        <div class="thumbnail">
 
-	          <img  src="{{image}}" style="height: 180px; width: 100%;" >
+	          <img  src="{{img}}" style="height: 180px; width: 100%;" >
 	          <h3>{{title}}</h3>
     				<div class="caption">
 
 	          			<p>{{details.descrip}}</p>
-	          			<p><strong>When:</strong>{{details.when}}</p>
-	          			<p><strong>Where:</strong>{{details.where}}</p>
-	          			<p><strong>Ticket Discount Code:</strong>  {{ticketInfo.discount}}</p>
+	          			<p><strong>When:</strong> {{details.when}}</p>
+	          			<p><strong>Where:</strong> {{details.where}}</p>
+	          			<p><strong>Ticket Info:</strong> {{ticketInfo.discount}}</p>
 	          			<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
 	          		</div>
 	        </div>
@@ -103,6 +103,116 @@
 	</div>
 
 
+
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/entertainment/pageSwitch.js"></script>
+<script type="text/javascript" src="/entertainment/entertainment.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower|Gamja+Flower" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/entertainment/iconfont.css">
+<!-- <link rel="stylesheet" type="text/css" href="/entertainment/pageSwitch.css"> -->
+<link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css">
+
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="display: none">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- The hamburger on the right -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+	        	<span class="sr-only">Toggle navigation</span>
+	       		<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	      		</button>
+	      		<a href="#############" class="navbar-brand"><i class="fas fa-home"></i>TravelPartner</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-nav-demo">
+				<ul class="nav navbar-nav">
+					<li><a href="############">Guide</a></li>
+					<li><a href="############">Food</a></li>
+					<li><a href="############">Accomodation</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="############"><i class="fas fa-users"></i>Sign Up</a></li>
+					<li><a href="############"><i class="fas fa-user-circle"></i>Login</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+
+<!-- <link rel="stylesheet" type="text/css" href="/entertainment/entertainment.css"> -->
+	<!-- this is the jumbotron in the top -->
+
+	<div class="container" >
+		<!-- <div><p>What's Hot</p></div> -->
+
+   		<h1 style="font-family: Gamja Flower; font-size: 50px; padding-bottom: 20px; text-transform: uppercase; color: #2c3e50;">
+   				Entertainments @ {{city}}</h1>
+   		<h3 style="font-family: Gamja Flower; color: #2c3e50 font-size: 50px"><i class="fa fa-camera-retro"></i>
+   				A bunch of entertainment ideas, tips, and recommendations for you for a happier journey!</h3>
+  		<br><br>
+
+
+		<div id="container1">
+  	  		<div class="sections" id="pageAll">
+
+  	  			{{#each top3}}
+				<div style="width: 100%; height= 30%">
+					<img  class="section" id="section{{@key}}" onclick="jumpContent('jumpContent{{@key}}','section{{@key}}')" src = "{{img}}" style="width: 100%; height= 150%">
+
+    			 	<div id="jumpContent{{@key}}"style="height: 0%; width: 0%; left:50%; top:50%; position: absolute; border: none; background-color: #efefef; opacity: 0； font-size: 20px; display: none" onclick="jumpBack('jumpContent{{@key}}','section{{@key}}')">
+
+   	    	 	    	<div id="show{{@key}}"  class='caption' align="center" style="font-family: Gamja Flower;">
+        					<h3>{{title}}</h3>
+	          				<p>{{details.descrip}}</p>
+	          				<p><strong>When:</strong> {{details.when}}</p>
+	          				<p><strong>Where:</strong> {{details.where}}</p>
+	          				<p><strong>Ticket Info:</strong> {{ticketInfo.discount}}</p>
+	          				<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
+	          			</div>
+
+    				</div>
+
+				</div>
+       			{{/each}}
+
+    		</div>
+		</div>
+		<br><br>
+
+	    <div class="row">
+
+	      {{#each regular}}
+
+	      <div class="col-lg-4 col-sm-6">
+	        <div class="thumbnail">
+
+	          <img  src="{{img}}" style="height: 180px; width: 100%;" >
+	          <h3>{{title}}</h3>
+    				<div class="caption">
+
+	          			<p>{{details.descrip}}</p>
+	          			<p><strong>When:</strong> {{details.when}}</p>
+	          			<p><strong>Where:</strong> {{details.where}}</p>
+	          			<p><strong>Ticket Info:</strong> {{ticketInfo.discount}}</p>
+	          			<p><a href="{{ticketInfo.link}}" class="btn btn-primary" role="button">Book Tickets!</a></p>
+	          		</div>
+	        </div>
+	      </div>
+
+	      {{/each}}
+
+		</div>
+
+	</div>
 
 
 

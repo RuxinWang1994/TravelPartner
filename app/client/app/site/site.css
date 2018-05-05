@@ -3,6 +3,7 @@
 
 
 /* general text formatting */
+
 body { padding-top: 70px; }
 .jumbotron {
     color: #2c3e50;
@@ -11,8 +12,7 @@ body { padding-top: 70px; }
 }
 
 .row  {
-    margin:8px 0px;
-    background-color: #f1f1ed;
+    margin:10px 0px;
     border: 0.4px #f1f9ea;
     text-align:left;
 }
@@ -98,7 +98,7 @@ fieldset {
             float: left;
         }
         .sender div:nth-of-type(2){
-            background-color: aquamarine;
+            background-color: #efeff5;
             float: left;
             margin: 0 20px 10px 15px;
             padding: 10px 10px 10px 0px;
@@ -107,8 +107,8 @@ fieldset {
 
         .receiver div:first-child img,
         .sender div:first-child img{
-            width:50px;
-            height: 50px;
+          width:50px;
+           height: 50px;
         }
 
         .receiver{
@@ -119,7 +119,7 @@ fieldset {
         }
         .receiver div:nth-of-type(2){
             float:right;
-            background-color: gold;
+            background-color: #efeff5;
             margin: 0 10px 10px 20px;
             padding: 10px 0px 10px 10px;
             border-radius:7px;
@@ -130,7 +130,7 @@ fieldset {
             width:0px;
             border-width:8px;
             border-style:solid;
-            border-color:transparent aquamarine transparent transparent;
+            border-color:transparent #efeff5 transparent transparent;
             position: relative;
             left:-16px;
             top:3px;
@@ -141,7 +141,7 @@ fieldset {
             width:0px;
             border-width:8px;
             border-style:solid;
-            border-color:transparent transparent transparent gold;
+            border-color:transparent transparent transparent #efeff5;
             position: relative;
             right:-16px;
             top:3px;

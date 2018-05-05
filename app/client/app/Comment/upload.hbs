@@ -5,26 +5,10 @@
 
 </div>
 <div class="container">
-<div class="jumbotron" >
-<h2 class="headCenterText"> Write your own guides! </h2>
-<h3 class="headCenterText"> Express your ideas and impacts</h3>
+	<div style="background: #c2c2d6;height:200%; font-family: 'Gaegu', cursive; background-image: url('https://images.unsplash.com/photo-1505485493171-fde25bd8313f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1dc63e2028486fd5ca6648ab0a239ce1&auto=format&fit=crop&w=2100&q=80')"， class="jumbotron" >
+  <h2 class="headCenterText"> Write your comment! </h2>
+  <h3 class="headCenterText"> Express your ideas</h3>
 </div>
-<h1 class="headText">Boston</h1>
-<h2 class="headText">Write a travel guide</h2><br><br>
-
-<!--<form method="get" action="" onsubmit="return validateForm()",action 是submit之后跳转的页面的URL>-->
-<form method="post" action="" onsubmit="return validateForm()" id="guideForm">
-<input id="title" type="text" class="form-control required" placeholder="Please Input Travel Guide Title">
-<br>
-<input id="keyword" type="text" class="form-control required" placeholder="Please Input keywords">
-<br>
-
-<textarea id="content" class="form-control required" rows="20" placeholder="Please Input Your Travel Guide!"></textarea><br>
-
-<button id="TrySubmit" type="submit" class="btn btn-primary">Submit</button><br><br>
-
-<div style="height:100px"></div>
-</form>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -37,69 +21,97 @@
 					Warning
 				</h4>
 			</div>
-			<div class="modal-body">
-				Inout should not be empty!
+			<div class="modal-body" id="body">
+        Title should be changed!
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
 
+<!--<form method="get" action="" onsubmit="return validateForm()",action 是submit之后跳转的页面的URL>-->
+<form method="post" action="" onsubmit="return validateForm()" id="guideForm">
+<input id="title" type="text" class="form-control required" placeholder="Please Input Travel Guide Title">
+<br>
+<input id="keyword" type="text" class="form-control required" placeholder="Please Input keywords">
+<br>
+
+
+<textarea id="commentBody" class="form-control required" rows="20" placeholder="Please Input Your Travel Guide!"></textarea><br>
+
+<button id="TrySubmit" type="submit" class="btn btn-primary">Submit</button><br><br>
+
+<div style="height:100px"></div>
+</form>
 </div>
 
 
 <button onclick="topFunction()" id="myBtn" type="button" class="btn btn-primary" style="position: fixed; bottom: 20px;right: 30px;">Top</button>
 <script>
-window.onscroll = function() {scrollFunction()};
+ $(document).ready(function(){
+     window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
+     function scrollFunction() {
+         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+             document.getElementById("myBtn").style.display = "block";
+         } else {
+             document.getElementById("myBtn").style.display = "none";
+         }
+     }
 
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+     function topFunction() {
+         document.body.scrollTop = 0;
+         document.documentElement.scrollTop = 0;
+     }
 
-$('#TrySubmit')
-  .click(function(){
-    if (!validateForm()) {
-      return false;
-}
+     $('#TrySubmit')
+         .click(function(){
+             if (!validateForm()) {
+                 return false;
+             }
 
-var title = $('#guideForm #title').val();
-var keyword=$('#guideForm #keyword').val();
-var content = $('#guideForm #content').val();
-axios.post('/g/new', {
-  title: title,
-  keyword: keyword,
-  content: content
-  }).then(function (response) {
-    console.log(response);
-    if (response.status == 'fail') {
-			$('#myModal').modal('show');
-
-    } else {
-    //  location.href(response.xxxx);
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  console.log(title);
-  return false;
-});
+             var title = $('#guideForm #title').val();
+             var keyword=$('#guideForm #keyword').val();
+             var commentBody = $('#guideForm #commentBody').val();
+             axios.post('/c/new', {
+                 user: window.localStorage.getItem('username'),
+                 title: title,
+                 keyword: keyword,
+                 commentBody: commentBody,
+             }, {
+                 headers: { Authorization: 'Bearer ' + window.localStorage.getItem('token') }
+             }).then(function (response) {
+                 console.log(response);
+                 if(response.status==403)
+                     {
+                         console.log(12345);
+                         $('#sign-in-modal').modal('show');
+                         //  return false;
+                     }
+                 if (response.data.status == 'error') {
+                     $('#myModal').modal('show');
+                 } else if (response.data.status == 'success') {
+                     window.location = response.data.url;
+                 }
+                 else {
+                     //  location.href(response.xxxx); response.status==403
+                 }
+             }).catch(function (error) {
+                 if (error.response.status == 403) {
+                     $('#sign-in-modal').modal('toggle');
+                 }
+                 console.log(error);
+             });
+             console.log(title);
+             return false;
+         });
+ });
 
 
 </script>
-
 
 <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

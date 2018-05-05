@@ -13,7 +13,12 @@ let LocationSchema = new Schema({
         required: true
     },
     desc: String,
-    panoramas: [String],
+    panoramas: [{
+        name: String,
+        location: String,
+        lat: String,
+        lng: String
+    }],
     imgs: [String],
     banner: String,
     geo: {
@@ -35,7 +40,11 @@ let LocationSchema = new Schema({
     trans: [Schema.Types.ObjectId],
     guides: [Schema.Types.ObjectId],
     spots: [Schema.Types.ObjectId],
-    votes: [String]
+    votes: [String],
+    meta: {
+        type: Schema.Types.Mixed,
+        default: {}
+    }
 });
 
 module.exports = mongoose.model('Place', LocationSchema);

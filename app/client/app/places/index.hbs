@@ -1,0 +1,195 @@
+<link rel="stylesheet" href="/places/place.css">
+
+<style type="text/css">
+  .sub-con {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  }
+  .sub-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  }
+  .sub-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background: #ffffff5e;
+  }
+  .sub-title a {
+  position: absolute;
+  color: black;
+  cursor: pointer;
+  top: 0.5em;
+  left: 1em;
+  font-size: 1.5em;
+  }
+  .tabcontent {
+    height:476px;
+  }
+</style>
+
+<div class="container">
+		<div class="jumbotron" style="background: url('{{ city_banner}}') center center no-repeat;background-size: 100% 100%;height: 500px;">
+        <div style="">
+			  <h2 style="font-style:bold;color:white;">Welcome To {{ city_name }}</h2>
+        </div>
+		</div>
+
+    <!-- *************Vertical Tab************ -->
+
+	  <div class="tab" style="height:476px;">
+  		  <button class="tablinks" onclick="openTab(event, 'Introduction')" id="defaultOpen"><i class="fas fa-book"></i> Introduction</button>
+  		  <button class="tablinks" onclick="openTab(event, 'Guide')"><i class="fas fa-globe"></i> Travel Guide</button>
+  		  <button class="tablinks" onclick="openTab(event, 'Accomodation')"><i class="fas fa-bed"></i> Accomodation</button>
+ 		    <button class="tablinks" onclick="openTab(event, 'Food')"><i class="fas fa-utensils"></i> Local Food</button>
+  		  <button class="tablinks" onclick="openTab(event, 'Entertainment')"><i class="fas fa-music"></i> Entertainment</button>
+        <button class="tablinks" onclick="openTab(event, 'Transportation')"><i class="fas fa-bus"></i> Transportation</button>
+    </div>
+
+    <!-- *****coresponding pages********* -->
+	  <div id="Introduction" class="tabcontent" >
+	      <iframe style="right: 0; bottom: 0; width:100%; height: 100%" src="{{ city_intro }}"></iframe>
+		    <!--<p style="text-align:right">Video By: No Hesitations-Youtube</p>-->
+	  </div>
+
+	  <div id="Guide" class="tabcontent">
+      <div class="sub-con">
+        <img class="sub-img" style="width:100%;height:100%;" src="{{ sub.guide.banner }}">
+	      <div class= "sub-title"> <a href="{{ sub.guide.listUrl }}">{{ sub.guide.title }}</a></div>
+      </div>
+	  </div>
+
+	  <div id="Accomodation" class="tabcontent">
+      <div class="sub-con">
+        <img class="sub-img" style="width:100%;height:100%;" src="{{ sub.acco.banner }}">
+	      <div class= "sub-title"> <a href="{{ sub.acco.listUrl }}">{{ sub.acco.title }}</a></div>
+      </div>
+	  </div>
+
+	  <div id="Food" class="tabcontent">
+      <div class="sub-con">
+        <img class="sub-img" style="width:100%;height:100%;" src="{{ sub.food.banner }}">
+	      <div class= "sub-title"> <a href="{{ sub.food.listUrl }}">{{ sub.food.title }}</a></div>
+      </div>
+	  </div>
+
+	  <div id="Entertainment" class="tabcontent">
+      <div class="sub-con">
+        <img class="sub-img" style="width:100%;height:100%;" src="{{ sub.spot.banner }}">
+	      <div class= "sub-title"> <a href="{{ sub.spot.listUrl }}">{{ sub.spot.title }}</a></div>
+      </div>
+  	</div>
+
+    <div id="Transportation" class="tabcontent">
+      <div class="sub-con">
+        <img class="sub-img" style="width:100%;height:100%;" src="{{ sub.trans.banner }}">
+        <div class= "sub-title"> <a href="{{ sub.trans.listUrl }}">{{ sub.trans.title }}</a></div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:30em;"> </div>
+    <div class="row" style="margin-top:2em;">
+      <hr>
+        <div class="col-md-8" style="font-style:italic;padding: 1em;">
+          {{ city_desc }}
+        </div>
+        <div class="col-md-4" style="text-align:left;">
+          <div id="city-map" style="height: 200px;width: 100%;"></div>
+        </div>
+    </div>
+
+	  <div class="row" style="margin-top:2em;">
+      <div class="" style="font-size:1.5em;">Image Gallery</div>
+      <hr>
+      <div class="" style="clear:both;">
+	    	{{#each city_imgs}}
+	      	  <div class="col-lg-3 col-sm-4">
+	        	    <div class="thumbnail">
+	        		      <img src="{{ this }}" id="section{{@key}}" onclick="jumpContent('jumpContent','section{{@key}}')">
+				        </div>
+			      </div>
+			  {{/each}}
+      </div>
+			  <div class="col-lg-3 col-sm-4">
+	        	<div class="thumbnail">
+	        		  <img src="https://images.unsplash.com/photo-1478987447929-0f12b4d56d71?ixlib=rb-0.3.5&s=1557dd138272f08faaa8788e01e8bff3&auto=format&fit=crop&w=1350&q=80">
+				    </div>
+			  </div>
+		</div>
+    <div>
+        <div style="float:right;font-size:1.5em">Panoramas</div>
+        <hr style="clear:both;">
+    <div id="for-panoramas" style="clear:both">
+    </div>
+    </div>
+
+
+</div><!--for class= container -->
+
+<script type="text/javascript">
+
+ function initMap() {
+     var position = {
+         lat: {{ city_geo.lat }},
+         lng: {{ city_geo.lng }}
+     };
+     var googleMap = new google.maps.Map(document.getElementById('city-map'), {
+         zoom: 4,
+         center: position
+     });
+
+     var cityMarker = new google.maps.Marker({ position: position, map: googleMap });
+
+     var city_panoramas = [];
+     {{#each city_panoramas}}
+
+     city_panoramas.push({
+         name: "{{ name }}",
+         location: "{{ location }}",
+         lat: {{ lat }},
+         lng: {{ lng }}
+     });
+
+     {{/each}}
+
+     var panoramas = [];
+
+     var outerWrap = $('<div class="row"></div>');
+     for (var key = 0; key < city_panoramas.length; key ++) {
+         let panoHTML = $('<div></div>');
+         panoHTML.attr('id', 'street-view' + key);
+         panoHTML.css('width', '100%');
+         panoHTML.css('height', '320');
+         panoHTML.css('padding', '2em');
+
+         let panoWrapHTML = $('<div class="col-md-6"></div>');
+         panoWrapHTML.css('padding', '1em');
+         panoWrapHTML.append(panoHTML);
+         panoWrapHTML.append($('<div style="text-align:center">' + city_panoramas[key].name + '</div>'));
+         outerWrap.append(panoWrapHTML);
+console.log(outerWrap.html());
+         if (key % 2 == 1) {
+             $('#for-panoramas').append(outerWrap);
+             outerWrap = $('<div class="row"></div>');
+         }
+     }
+
+     for (var key = 0;key < city_panoramas.length; key++) {
+         panoramas[key] = new google.maps.StreetViewPanorama(
+             document.getElementById('street-view' + key),
+             {
+                 position: { lat: city_panoramas[key].lat, lng: city_panoramas[key].lng },
+                 pov: {heading: 165, pitch: 0},
+                 zoom: 1
+             });
+
+     }
+ }
+</script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script type="text/javascript" src="/places/place.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsmrS2NY9Ld9Yn4LAdgdH0hRxIIfI7AeI&callback=initMap" type="text/javascript"></script>

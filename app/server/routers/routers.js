@@ -1,9 +1,10 @@
-'use strict'
+'use strict';
 
 const router = require('express').Router();
 
 router.use('/s', require('./site.router'));
 router.use('/u', require('./user.router'));
+router.use('/p', require('./place.router'));
 router.use('/a', require('./accommodation.router'));
 router.use('/c', require('./comment.router'));
 router.use('/e', require('./entertainment.router'));

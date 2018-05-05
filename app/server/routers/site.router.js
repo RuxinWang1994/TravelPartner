@@ -9,6 +9,8 @@ const token = require('../lib/token');
 router.get('/', (req, res, next) => {
     let Site = req.app.locals.db.model('Site');
     let Place = req.app.locals.db.model('Place');
+    let Guide = req.app.locals.db.model('Guide');
+    let User = req.app.locals.db.model('User');
 
     Site.findOne()
         .exec()
@@ -21,14 +23,69 @@ router.get('/', (req, res, next) => {
                     for (let place of places) {
                         ret.push({
                             name: place.name,
-                            geo: place.geo
+                            geo: place.geo,
+                            url: `/p/${place.name}-${place._id}`
                         });
                     }
                     return ret;
                 });
         }).then((places) => {
             console.log(places);
-            res.render('site/index', { places: places });
+            return Guide
+                .find()
+                .limit(3)
+                .exec()
+                .then((guides) => {
+                    console.log(guides);
+                    let guideUsers = [];
+                    for (let guide of guides)
+                        guideUsers.push(guide.user);
+
+                    User
+                        .where('name').in(guideUsers)
+                        .exec()
+                        .then((users) => {
+                            let userInfo = {};
+                            for (let user of users) {
+                                userInfo[user.name] = user.avatar;
+                            }
+
+                            let firstGuide = {
+                                user: guides[0].user,
+                                image: guides[0].image[0],
+                                avatar: userInfo[guides[0].user],
+                                title: guides[0].title,
+                                url: '/g/view/' + guides[0].title.split(' ').join('-'),
+                                updated_at: guides[0].created_at,
+                                summary: guides[0].content.substr(0, 50) + '...',
+                                tags: guides[0].tags
+                            };
+
+                            let secondGuide = {
+                                user: guides[1].user,
+                                image: guides[1].image[0],
+                                avatar: userInfo[guides[1].user],
+                                title: guides[1].title,
+                                url: '/g/view/' + guides[1].title.split(' ').join('-'),
+                                updated_at: guides[1].created_at,
+                                summary: guides[1].content.substr(0, 50) + '...',
+                                tags: guides[1].tags
+                            };
+
+                            let thirdGuide = {
+                                user: guides[2].user,
+                                image: guides[2].image[0],
+                                avatar: userInfo[guides[2].user],
+                                title: guides[2].title,
+                                url: '/g/view/' + guides[2].title.split(' ').join('-'),
+                                updated_at: guides[2].created_at,
+                                summary: guides[2].content.substr(0, 50) + '...',
+                                tags: guides[2].tags
+                            };
+
+                            res.render('site/index', { places: places, firstGuide: firstGuide, secondGuide: secondGuide,thirdGuide: thirdGuide });
+                        });
+                });
         })
         .catch((err) => {
             console.log(err);
@@ -92,6 +149,7 @@ router.post('/signup', (req, res, next) => {
                     status: 'success',
                     username: user.name,
                     token: token,
+                    avatar: user.avatar,
                     url: referer
                 });
             });
@@ -141,7 +199,7 @@ router.post('/signin', (req, res, next) => {
         .then((result) => {
             if (result == true) {
                 return token.get(content.username).then((token) => {
-                    let res = { "status": "success", "token": token };
+                    let res = { "status": "success", "token": token, "avatar": content.avatar || '' };
                     return res;
                 });
             } else {
@@ -159,7 +217,7 @@ router.post('/signin', (req, res, next) => {
 });
 
 router.post('/logout', (req, res, next) => {
-    
+
 });
 
 module.exports = router;

@@ -130,6 +130,11 @@ if (config.server.staticFile) {
     app.use('*', (req, res) => { res.sendFile('index.html', { root: path }); });
 }
 
+app.use(function(err, req, res, next) {
+    console.log(err);
+    res.status(500).end('500 http error.');
+});
+
 dbConnection.then((res) => {
     console.log('Database connected.');
 

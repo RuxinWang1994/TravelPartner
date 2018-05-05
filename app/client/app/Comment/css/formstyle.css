@@ -6,8 +6,9 @@
 body { padding-top: 70px; }
 .jumbotron {
     color: #2c3e50;
-    background: #ecf0f1;
-    
+    background: #e0e0eb;
+    text-align: center;
+
 }
 
 .row  {
@@ -47,7 +48,7 @@ nav{
     font-size:66px;
     color:#ccc;
     cursor:pointer;
-    
+
 }
 .cs
 {
@@ -81,7 +82,7 @@ nav{
     text-indent: 40px;
 }
 
-table {  
+table {
    width: 90%;
    margin: 0 auto;
    border:1;
@@ -110,13 +111,10 @@ fieldset {
 .error {
     background: #FFCDD2 url(error.png) no-repeat 98% center;
     box-shadow: 0 0 5px #FF5252;
-    border-color: #FF1744;    
+    border-color: #FF1744;
 }
 .hilightable:focus
 {
-   
+
     background-color:orange;
 }
-
-
-

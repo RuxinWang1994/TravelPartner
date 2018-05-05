@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sub-Index</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Anton|Do+Hyeon|Indie+Flower|Lobster" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="subIndex.css">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="display: none">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- The hamburger on the right -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+	        	<span class="sr-only">Toggle navigation</span>
+	       		<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	      		</button>
+	      		<a href="#############" class="navbar-brand"><i class="fas fa-home"></i>TravelPartner</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-nav-demo">
+				<ul class="nav navbar-nav">
+					<li><a href="############">Guide</a></li>
+					<li><a href="############">Food</a></li>
+					<li><a href="############">Accomodation</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="############"><i class="fas fa-users"></i>Sign Up</a></li>
+					<li><a href="############"><i class="fas fa-user-circle"></i>Login</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+
+
+
+
+	<div class="container">
+		<div class="jumbotron" style="background-image: url('https://images.unsplash.com/photo-1430609098125-581618d0482f?ixlib=rb-0.3.5&s=c6593459d4f6847ae9dfadc2edbddd3c&auto=format&fit=crop&w=1350&q=80')">
+			
+			<h2>Welcome To {{city-name}}</h2>
+			<p>{{city-introduction}}</p>
+		</div>
+
+
+<!-- *************Vertical Tab************ -->
+
+	<div class="tab">
+
+  		<button class="tablinks" onclick="openTab(event, 'Introduction')" id="defaultOpen"><i class="fas fa-book"></i> Introduction</button>
+  		<button class="tablinks" onclick="openTab(event, 'Guide')"><i class="fas fa-globe"></i> Travel Guide</button>
+  		<button class="tablinks" onclick="openTab(event, 'Food')"><i class="fas fa-bed"></i> Accomodation</button>
+ 		<button class="tablinks" onclick="openTab(event, 'Accomodation')"><i class="fas fa-utensils"></i> Local Food</button>
+  		<button class="tablinks" onclick="openTab(event, 'Entertainment')"><i class="fas fa-music"></i> Entertainment</button>
+	</div>
+
+<!-- *****coresponding pages********* -->
+	<div id="Introduction" class="tabcontent" >
+
+<!-- 	  <h3>About {{city-name}}</h3>
+	  <p>{{introduction}}</p> -->
+	  <iframe style="right: 0; bottom: 0; width:100%; height: 95%" src="https://www.youtube.com/embed/R1WKehsqzMI"></iframe>
+		<p style="text-align:right">Video By: {{No Hesitations-Youtube}}</p>
+	</div>
+
+	<div id="Guide" class="tabcontent">
+	  <h3>More Fun?</h3>
+	  <p>{{intro-guide}}</p>
+	</div>
+
+	<div id="Accomodation" class="tabcontent">
+	  <h3>Have a good night!</h3>
+	  <p>{{intro-accom}}</p>
+	</div>
+
+	<div id="Food" class="tabcontent">
+	  <h3>Have something special？</h3>
+	  <p>{{intro-food}}</p> 
+	</div>
+
+	<div id="Entertainment" class="tabcontent">
+  	  <h3>{{More Fun?}}</h3>
+	  <p>{{intro-enter}}</p>
+	</div>
+
+		<br><br>
+		<h2 style="margin-bottom: 20px; margin-top: 50px">Enjoy the beauty and fun @{{city-name}}</h2>
+
+	    <div class="row">
+	    	{{#each imageGallery}}
+	      	<div class="col-lg-3 col-sm-4">
+	        	<div class="thumbnail">
+	        		<img src="https://images.unsplash.com/photo-1478987447929-0f12b4d56d71?ixlib=rb-0.3.5&s=1557dd138272f08faaa8788e01e8bff3&auto=format&fit=crop&w=1350&q=80" id="section0" onclick="jumpContent('jumpContent','section0')">
+				</div>
+			</div>	      	
+			{{/each}}
+			<div class="col-lg-3 col-sm-4">
+	        	<div class="thumbnail">
+	        		<img src="https://images.unsplash.com/photo-1478987447929-0f12b4d56d71?ixlib=rb-0.3.5&s=1557dd138272f08faaa8788e01e8bff3&auto=format&fit=crop&w=1350&q=80">
+				</div>
+			</div>	      	
+
+
+		</div>
+
+
+
+
+
+
+</div><!--for class= container -->
+
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="subIndex.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/TG/css/formstyle.css" />
+<link href="https://fonts.googleapis.com/css?family=Cabin|Cute+Font|Dancing+Script|Dosis|Gaegu|Gamja+Flower|Great+Vibes|IBM+Plex+Mono|Quicksand|Satisfy|Titillium+Web" rel="stylesheet">
 
 <div id ="TG">
 </div>
@@ -6,11 +7,9 @@
 </div>
 <div class="container">
 <div class="jumbotron" >
-  <h2 class="headCenterText"> Write your own guides! </h2>
-  <h3 class="headCenterText"> Express your ideas and impacts</h3>
+  <h2 style="text-align: center;font-family: 'Gaegu', cursive;" > Write your own guide </h2>
+  <h3  style="text-align: center;font-family: 'Gaegu', cursive;" > Express your ideas</h3>
 </div>
-<h1 class="headText">Boston</h1>
-<h2 class="headText">Write a travel guide</h2><br><br>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -24,7 +23,7 @@
 				</h4>
 			</div>
 			<div class="modal-body" id="body">
-
+        Title should be changed!
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close
@@ -49,6 +48,7 @@
 
 <div style="height:100px"></div>
 </form>
+
 </div>
 
 
@@ -75,7 +75,7 @@
              if (!validateForm()) {
                  return false;
              }
-             
+
              var title = $('#guideForm #title').val();
              var keyword=$('#guideForm #keyword').val();
              var content = $('#guideForm #content').val();
@@ -91,13 +91,12 @@
              }).then(function (response) {
                  console.log(response);
                  if(response.status==403)
-                     {
+                     { 
                          console.log(12345);
                          $('#sign-in-modal').modal('show');
                          //  return false;
                      }
                  if (response.data.status == 'error') {
-                     $('#myModal #body').val("Title should not be repeat");
                      $('#myModal').modal('show');
                  } else if (response.data.status == 'success') {
                      window.location = response.data.url;

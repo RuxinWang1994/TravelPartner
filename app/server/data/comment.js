@@ -8,7 +8,8 @@ let CommentSchema = new Schema({
 //      type: Schema.Types.ObjectId,
 //      default: new mongoose.Types.ObjectId
 //  },
-
+  userImg: String,
+  titleImg: String,
   title: {
       type: String,
       required: true,
@@ -27,6 +28,7 @@ let CommentSchema = new Schema({
 
   reply:[
     {
+      replyImg: String,
       replier: String,
       replyBody: String,
       replyTime: {
