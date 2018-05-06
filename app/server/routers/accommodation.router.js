@@ -3,8 +3,7 @@
 const router = require('express').Router();
 
 
-//url
-
+//define the second-level site of accommodation part
 router.get('/view/:hotel', function(req, res,next){
  let hotel = req.params.hotel.split('-');
  let hotelName = hotel[0];
@@ -17,14 +16,14 @@ router.get('/view/:hotel', function(req, res,next){
      console.log(hotel.desc);
      console.log(hotel.address);
   res.render('accommodation_new/subtest1', { img_source_1: (hotel.img)[1], img_source_2: (hotel.img)[2], img_source_3:(hotel.img)[3],
-                                        name: hotel.name, phone: hotel.phone, price: hotel.price, email: hotel.email, address:hotel.address, description:hotel.desc});
+         name: hotel.name, phone: hotel.phone, price: hotel.price, email: hotel.email, address:hotel.address, description:hotel.desc});
      }
 
    })
  });
 
-
-// location: "boston"-"_id"
+//define the main site of accommodation part
+// first find the location: "boston"-"_id"
 router.get('/:place',(req, res, next)=>{
   let Place = req.app.locals.db.model('Place');
   let Acco = req.app.locals.db.model('Acco');
@@ -37,7 +36,7 @@ router.get('/:place',(req, res, next)=>{
     if (!err) {
       let hotels = place.hotels;
 
-
+//find the first four cheap hotels
     Acco.find({ '_id': { $in: hotels } }).sort({ 'price': '-1' }).limit(4).exec(function(err, accos) {
         console.log(accos);
           let cheap = [];
@@ -52,19 +51,18 @@ router.get('/:place',(req, res, next)=>{
           for (let acco of accos) {
             cheap.push({
               image_source: (acco.img)[0],
-              //imgs: acco.img,
               url: '/a/view/' + acco.name + '-' + acco._id,
               name: acco.name,
               address: acco.address
             })
           };
 
+//find the first four luxury hotels
       Acco.find({ '_id': { $in: hotels } }).sort({ 'price': '1' }).limit(4).exec(function(err, accos) {
               for (let acco of accos) {
                 luxury.push({
                   image_source: (acco.img)[0],
                   url: '/a/view/' + acco.name + '-' + acco._id,
-                  //imgs: acco.img,
                   name: acco.name,
                   address: acco.address,
                   desc:acco.desc
@@ -72,11 +70,9 @@ router.get('/:place',(req, res, next)=>{
               };
 
               Acco.find({ '_id': { $in: hotels } ,'tags': 'romantic'}).limit(4).exec(function(err, accos) {
-                  //console.log(accos);
                   for (let acco of accos) {
                     romantic.push({
                       image_source: (acco.img)[0],
-                      //imgs: acco.img,
                       url: '/a/view/' + acco.name + '-' + acco._id,
                       name: acco.name,
                       address: acco.address,
@@ -84,12 +80,11 @@ router.get('/:place',(req, res, next)=>{
                     })
                   };
 
+//find the first four business hotels
                   Acco.find({ '_id': { $in: hotels } ,'tags': 'business'}).limit(4).exec(function(err, accos) {
-                      //console.log(accos);
                       for (let acco of accos) {
                         business.push({
                           image_source: (acco.img)[0],
-                          //imgs: acco.img,
                           url: '/a/view/' + acco.name + '-' + acco._id,
                           name: acco.name,
                           address: acco.address,
@@ -97,12 +92,11 @@ router.get('/:place',(req, res, next)=>{
                         })
                       };
 
+//find the first four family hotels
                       Acco.find({ '_id': { $in: hotels } ,'tags': 'family-friendly'}).limit(4).exec(function(err, accos) {
-                          //console.log(accos);
                           for (let acco of accos) {
                             family.push({
                               image_source: (acco.img)[0],
-                              //imgs: acco.img,
                               url: '/a/view/' + acco.name + '-' + acco._id,
                               name: acco.name,
                               address: acco.address,
@@ -111,6 +105,7 @@ router.get('/:place',(req, res, next)=>{
                             })
                           };
 
+//find the first four top hotels
                         Acco.aggregate()
                           .unwind('votes')
                           .group({ _id: '$_id', votesCount: { $sum: 1 }, name: { $first: '$name' }, email: { $first: '$email' }, img: { $first: '$img' }, votes: { $first: '$vote' }})
@@ -151,19 +146,3 @@ router.get('/:place',(req, res, next)=>{
   });
 
   module.exports = router;
-
-
-
-         /*
-        tophotel sort with votes
-
-
-        Acco.aggregate([{'_id': { $in: hotels}}, { $unwind: "$votes" }, { $sortByCount: "$votes" }]).limit(1).exec(function(err, accos) {
-            console.log(accos);
-            for (let acco of accos) {
-              top.push({
-                image_source: (acco.img)[3],
-                imgs: acco.img,
-                name: acco.name,
-                email: acco.email
-                */

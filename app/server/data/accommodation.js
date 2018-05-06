@@ -1,13 +1,8 @@
 'use strict';
-
+//define the accommodation part schematypes
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 let AccommodationSchema = new Schema({
-//_id: {
-//     type: Schema.Types.ObjectId,
-//     default: new mongoose.Types.ObjectId
-// },
 name: {
      type: String,
     index: true,
@@ -31,7 +26,6 @@ price:{
       type:String,
       required:true
    },
-
  img:[String],
  tags: [String],
  address: String,
